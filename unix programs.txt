@@ -1,0 +1,111 @@
+1. Write a shell script to find whether an input integer is even or odd?
+
+read -p "Enter a number: " number
+if [ $((number%2)) -eq 0 ]
+then
+  echo "Number is even."
+else
+  echo "Number is odd."
+fi
+
+---------------------------
+
+2. Write a shell script to find out the greatest among three inputs ?.
+
+echo "Enter Num1"
+read num1
+echo "Enter Num2"
+read num2
+echo "Enter Num3"
+read num3
+
+if [ $num1 -gt $num2 ] && [ $num1 -gt $num3 ]
+then
+    echo $num1
+elif [ $num2 -gt $num1 ] && [ $num2 -gt $num3 ]
+then
+    echo $num2
+else
+    echo $num3
+fi
+
+------------------
+
+3. Write a shell script to calculate the net salary of an employee in a particular month considering various
+
+  allowances (TA, DA, HRA) and deductions (INCOME TAX, PROVIDEND FUND) as:
+
+a. TA=15 percent of basic salary
+
+b. DA=2 percent of basic salary
+
+c. HRA=10 percent of basic salary
+
+d. INCOME TAX=5 percent of salary
+
+e. PROVIDEND FUND=10 percent of salary
+
+
+read -p "enter basic salary of persionv : " basic_salary
+
+ta=`expr 15 \* $basic_salary / 100`
+da=`expr 2 \* $basic_salary / 100`
+hra=`expr 10 \* $basic_salary / 100`
+salary=`expr $basic_salary + $ta + $da + $hra`
+incom_tax=`expr 5 \* $salary / 100`
+providend_fund=`expr 10 \* $salary / 100`
+salary=`expr $salary - $incom_tax - $providend_fund`
+
+echo "the final salary of person is : $salary"
+
+--------------------------------------------
+
+
+4)A departmental store announces its festival scheme to customers on cash payment. The scheme is as
+
+follows[1]a. If purchase amount is less than 1000 then Tax=2% and discount=10%.
+
+b. If purchase amount is greater than 1000 then Tax=5 % and discount=20%.
+
+
+read -p "enter bill of the persion : " bill
+if [ $bill -lt 1000 ]
+then
+     tax=`expr $bill \* 2 / 100`
+     discount=`expr $bill \* 10 / 100`
+     bill=`expr $bill + $tax - $discount`
+else
+     tax=`expr $bill \* 5 / 100`
+     discount=`expr $bill \* 20 / 100`
+     bill=`expr $bill + $tax - $discount`
+
+fi
+echo "final bill after tax and discount is : $bill"
+
+--------------------------------------------------------------
+
+
+5)Write a shell script to perform an arithmetic operation upon two inputs. The operation should also be input
+
+by the user
+
+read -p "enter num1  value : " num1
+read -p "enter num2 value : " num2
+addition=`expr $num1 + $num2`
+echo "addition of numbers : $addition"
+mul_num=`expr $num1 \* $num2`
+echo "multiplication of numbers : $mul_num"
+sub_num=`expr $num1 - $num2`
+echo "subtraction of numbers : $sub_num"
+div_num=`expr $num1 / $num2`
+echo "division of numbers : $div_num"
+mod_div=`expr $num1 % $num2`
+echo "modulus of numbers : $mod_div"
+
+----------------------------------------------------------
+
+6)Write a shell script to find out the length of an input string.
+
+str="Bash Shell Scripting Tutorial"
+length=`expr length "$str"`
+echo "Length of '$str' is $length"
